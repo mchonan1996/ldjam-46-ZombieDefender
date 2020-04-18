@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/zombie_basic_hurt2.ogg-e6e51664e609827fa67a2305c5ef77df.oggstr"
+
+[deps]
+
+source_file="res://sounds/zombie_basic_hurt2.ogg"
+dest_files=[ "res://.import/zombie_basic_hurt2.ogg-e6e51664e609827fa67a2305c5ef77df.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

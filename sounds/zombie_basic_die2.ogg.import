@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/zombie_basic_die2.ogg-d3baa4c9f7070030339768754095527d.oggstr"
+
+[deps]
+
+source_file="res://sounds/zombie_basic_die2.ogg"
+dest_files=[ "res://.import/zombie_basic_die2.ogg-d3baa4c9f7070030339768754095527d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

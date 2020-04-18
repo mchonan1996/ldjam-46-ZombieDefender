@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/Trail.gd" type="Script" id=1]
+
+[node name="Trail" type="Line2D"]
+position = Vector2( 0, 0.190132 )
+width = 5.0
+default_color = Color( 0, 0, 0, 1 )
+script = ExtResource( 1 )

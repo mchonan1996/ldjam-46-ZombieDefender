@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://sprites/prot/background.png" type="Texture" id=1]
+[ext_resource path="res://prefabs/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://prefabs/ZombieBase.tscn" type="PackedScene" id=3]
+[ext_resource path="res://prefabs/HUD.tscn" type="PackedScene" id=4]
+
+[node name="TemplateLevel" type="Node2D"]
+
+[node name="background" type="Sprite" parent="."]
+scale = Vector2( 4.2, 4.2 )
+texture = ExtResource( 1 )
+offset = Vector2( 128, 72 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 211.567, 279.531 )
+
+[node name="Zombies" type="Node" parent="."]
+
+[node name="ZombieBase" parent="Zombies" instance=ExtResource( 3 )]
+position = Vector2( 873.673, 226.914 )
+
+[node name="ZombieBase2" parent="Zombies" instance=ExtResource( 3 )]
+position = Vector2( 941.27, 302.021 )
+
+[node name="ZombieBase3" parent="Zombies" instance=ExtResource( 3 )]
+position = Vector2( 945.561, 422.194 )
+
+[node name="HUD" parent="." instance=ExtResource( 4 )]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 512, 302 )
+current = true
+
+[node name="GameController" type="Node" parent="."]
