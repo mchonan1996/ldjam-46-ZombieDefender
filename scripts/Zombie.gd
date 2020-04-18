@@ -16,38 +16,40 @@ func _ready() -> void:
 	randomize()
 	movement_speed = randi() % (max_movement_speed - min_movement_speed) + min_movement_speed
 	health = starting_health
-	
-	
-func _physics_process(delta: float) -> void:
+
+
+func _physics_process(_delta: float) -> void:
 	if not is_dead:
 		var direction = Vector2.LEFT
 		move_and_slide(direction * movement_speed, Vector2.UP)
 	else:
 		$AnimatedSprite.play("die")
-	
-	
+
+
 func damage(amount: int) -> void:
 	if is_dead:
 		return
 	health -= amount
 	if health <= 0:
 		die()
-	else:		
+	else:
 		$Sound.stream = load(get_random_hurt_sound())
 		$Sound.play()
-	
-		
+
+
 func die() -> void:
 	is_dead = true
 	$Sound.stream = load(get_random_death_sound())
 	$Sound.play()
-	
+	yield(get_tree(), "idle_frame")
+	$CollisionShape2D.disabled = true
+
 
 func get_random_hurt_sound() -> String:
 	randomize()
 	var i = randi() % PAIN_SOUND_AMOUNT + 1
 	return "res://sounds/zombie_basic_hurt%d.ogg" % i
-	
+
 
 func get_random_death_sound() -> String:
 	randomize()
