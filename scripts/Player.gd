@@ -45,7 +45,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide(velocity, Vector2.UP)
 
 
-func _input(event) -> void:
+func _input(_event) -> void:
 	var weap1_pressed = Input.is_action_just_pressed("switch_weap1")
 	var weap2_pressed = Input.is_action_just_pressed("switch_weap2")
 	var weap3_pressed = Input.is_action_just_pressed("switch_weap3")

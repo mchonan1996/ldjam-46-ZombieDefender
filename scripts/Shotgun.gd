@@ -35,15 +35,25 @@ func _on_Timer_timeout():
 	can_shoot = true
 
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	# shot anim is finished, play the reload anim
 	$ReloadSound.play()
 	gun_sprite.frame = 0
 	gun_sprite.play()
 
+
 func create_shell_shot():
-	pass
-	# instance bullet
+	# create 8 pellets
+	var target_pos := get_global_mouse_position()
+	create_pellet(target_pos)
+	create_pellet(target_pos.rotated(deg2rad(2)))
+	create_pellet(target_pos.rotated(deg2rad(4)))
+	create_pellet(target_pos.rotated(deg2rad(6)))
+	create_pellet(target_pos.rotated(deg2rad(8)))
+	create_pellet(target_pos.rotated(deg2rad(-2)))
+	create_pellet(target_pos.rotated(deg2rad(-4)))
+	create_pellet(target_pos.rotated(deg2rad(-6)))
+	create_pellet(target_pos.rotated(deg2rad(-8)))
 
 
 func create_pellet(direction: Vector2):
@@ -52,3 +62,4 @@ func create_pellet(direction: Vector2):
 	pellet.z_index = 0
 	pellet.position = gun_sprite.global_position
 	pellet.set_as_toplevel(true)
+	pellet.set_direction(direction)

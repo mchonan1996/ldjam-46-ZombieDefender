@@ -2,9 +2,10 @@ extends Area2D
 class_name Bullet
 
 const BULLET_SPEED = 2000
-const DAMAGE_AMOUNT = 20
 
 var velocity := Vector2.ZERO
+
+export var damage_amount = 0
 
 func _ready() -> void:
 	var target_pos := get_global_mouse_position()
@@ -24,5 +25,5 @@ func _on_Bullet_body_entered(body: Node) -> void:
 	if not zombie:
 		return
 
-	zombie.damage(DAMAGE_AMOUNT)
+	zombie.damage(damage_amount)
 	queue_free()
