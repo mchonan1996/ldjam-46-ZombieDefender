@@ -53,8 +53,8 @@ func _on_Zombie_Die() -> void:
 func spawn_zombie() -> void:
 	randomize()
 	var zombie_to_spawn = 1
-#	if Global.current_wave > 1: # only normal zombies for first round
-	zombie_to_spawn = randi() % 3 + 1
+	if Global.current_wave > 1: # only normal zombies for first round
+		zombie_to_spawn = randi() % 3 + 1
 	
 	var zombie_path = ZOMBIE_PATH % zombie_to_spawn
 	
