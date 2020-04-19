@@ -3,11 +3,7 @@
 [ext_resource path="res://scripts/HUD.gd" type="Script" id=1]
 [ext_resource path="res://fonts/BebasNeue-Regular.ttf" type="DynamicFontData" id=2]
 
-[sub_resource type="DynamicFont" id=4]
-size = 18
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 18
 font_data = ExtResource( 2 )
 
@@ -15,7 +11,11 @@ font_data = ExtResource( 2 )
 size = 18
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
+size = 18
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
 size = 18
 font_data = ExtResource( 2 )
 
@@ -47,7 +47,7 @@ __meta__ = {
 [node name="MoneyLabel" type="Label" parent="HBoxContainer/Money"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 1 )
 text = "Cash
 $0"
 align = 1
@@ -79,7 +79,7 @@ __meta__ = {
 [node name="PistolAmmoLabel" type="Label" parent="HBoxContainer/PistolAmmo"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "[1] Pistol Ammo
 INF"
 align = 1
@@ -101,9 +101,9 @@ __meta__ = {
 [node name="ShotgunAmmoLabel" type="Label" parent="HBoxContainer/ShotgunAmmo"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "[2] Shotgun Ammo
-50"
+%d"
 align = 1
 valign = 1
 __meta__ = {
@@ -125,9 +125,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -0.476471
 margin_bottom = -0.476471
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 4 )
 text = "[3] Rocket Ammo
-50"
+%d"
 align = 1
 valign = 1
 __meta__ = {

@@ -32,9 +32,12 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if Global.in_shop:
+		return # just in case
+
 	if not is_dead:
 		direction = Vector2.LEFT
-		
+
 		if next_knockback > 0 and can_knockback:
 			var player_pos = player.global_position
 			var diff = global_position - player_pos
@@ -42,7 +45,7 @@ func _physics_process(_delta: float) -> void:
 			next_knockback = 0
 			can_knockback = false
 			$KnockbackTimer.start()
-		
+
 		move_and_slide(direction * movement_speed, Vector2.UP)
 	else:
 		$AnimatedSprite.play("die")
@@ -52,7 +55,7 @@ func damage(amount: int, active_weapon: int) -> void:
 	if is_dead:
 		return
 	health -= amount
-	
+
 	if can_knockback:
 		if active_weapon == WeaponType.PISTOL:
 			next_knockback = KNOCKBACK_SMALL
@@ -60,12 +63,12 @@ func damage(amount: int, active_weapon: int) -> void:
 			next_knockback = KNOCKBACK_MEDIUM
 		elif active_weapon == WeaponType.ROCKETS:
 			next_knockback = KNOCKBACK_LARGE
-	
+
 	# play impact sound
 	if not $ImpactSound.playing:
 		$ImpactSound.stream = load(get_random_impact_sound())
 		$ImpactSound.play()
-	
+
 	if health <= 0:
 		die()
 	else:
@@ -77,13 +80,13 @@ func die() -> void:
 	is_dead = true
 	$Sound.stream = load(get_random_death_sound())
 	$Sound.play()
-	
+
 	# increase coins
 	get_tree().call_group("GAME", "increase_money", money_value)
-	
+
 	yield(get_tree(), "idle_frame")
 	$CollisionShape2D.disabled = true
-	
+
 	$DeadDisappearTimer.start()
 
 
@@ -95,7 +98,7 @@ func get_random_hurt_sound() -> String:
 func get_random_death_sound() -> String:
 	var i = randi() % DEATH_SOUND_AMOUNT + 1
 	return "res://sounds/zombie_basic_die%d.ogg" % i
-	
+
 
 func get_random_impact_sound() -> String:
 	var i = randi() % IMPACT_SOUND_AMOUNT + 1

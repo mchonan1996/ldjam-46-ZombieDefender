@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/zombie_groan5.ogg-56f1fce5955e0bdd73c9e5a5d745de4f.oggstr"
+
+[deps]
+
+source_file="res://sounds/zombie_groan5.ogg"
+dest_files=[ "res://.import/zombie_groan5.ogg-56f1fce5955e0bdd73c9e5a5d745de4f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

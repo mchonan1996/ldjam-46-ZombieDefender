@@ -1,0 +1,233 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://fonts/BebasNeue-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://sounds/Jim-Intro.ogg" type="AudioStream" id=2]
+[ext_resource path="res://sprites/prot/big_pistol.png" type="Texture" id=3]
+[ext_resource path="res://sprites/prot/big_shotgun.png" type="Texture" id=4]
+[ext_resource path="res://sprites/prot/big_rocket.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 42
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=3]
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = ExtResource( 1 )
+
+[node name="BuyMenu" type="PopupPanel"]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -400.0
+margin_top = -200.0
+margin_right = 400.0
+margin_bottom = 200.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Heading" type="Label" parent="VBoxContainer"]
+margin_right = 792.0
+margin_bottom = 51.0
+custom_fonts/font = SubResource( 1 )
+text = "Jim's Gun Shop"
+align = 1
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 55.0
+margin_right = 792.0
+margin_bottom = 255.0
+rect_min_size = Vector2( 0, 200 )
+
+[node name="PistolPanel" type="Panel" parent="VBoxContainer/HBoxContainer"]
+margin_right = 261.0
+margin_bottom = 200.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PistolPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="Label" parent="VBoxContainer/HBoxContainer/PistolPanel/VBoxContainer"]
+margin_right = 245.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 2 )
+text = "Pistol"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/PistolPanel/VBoxContainer"]
+self_modulate = Color( 0.74902, 0.74902, 0.74902, 1 )
+margin_top = 34.0
+margin_right = 245.0
+margin_bottom = 152.0
+size_flags_vertical = 3
+
+[node name="Preview" type="TextureRect" parent="VBoxContainer/HBoxContainer/PistolPanel/VBoxContainer/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -82.0
+margin_top = -59.0
+margin_right = 82.0
+margin_bottom = 59.0
+texture = ExtResource( 3 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyButton" type="Button" parent="VBoxContainer/HBoxContainer/PistolPanel/VBoxContainer"]
+margin_top = 156.0
+margin_right = 245.0
+margin_bottom = 192.0
+custom_fonts/font = SubResource( 4 )
+text = "Buy - $49"
+
+[node name="ShotgunPanel" type="Panel" parent="VBoxContainer/HBoxContainer"]
+margin_left = 265.0
+margin_right = 526.0
+margin_bottom = 200.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ShotgunPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="Label" parent="VBoxContainer/HBoxContainer/ShotgunPanel/VBoxContainer"]
+margin_right = 245.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 2 )
+text = "Shotgun"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/ShotgunPanel/VBoxContainer"]
+self_modulate = Color( 0.74902, 0.74902, 0.74902, 1 )
+margin_top = 34.0
+margin_right = 245.0
+margin_bottom = 152.0
+size_flags_vertical = 3
+
+[node name="Preview" type="TextureRect" parent="VBoxContainer/HBoxContainer/ShotgunPanel/VBoxContainer/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -103.0
+margin_top = -59.0
+margin_right = 103.0
+margin_bottom = 59.0
+texture = ExtResource( 4 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyButton" type="Button" parent="VBoxContainer/HBoxContainer/ShotgunPanel/VBoxContainer"]
+margin_top = 156.0
+margin_right = 245.0
+margin_bottom = 192.0
+custom_fonts/font = SubResource( 4 )
+text = "Buy - $399"
+
+[node name="RocketPanel" type="Panel" parent="VBoxContainer/HBoxContainer"]
+margin_left = 530.0
+margin_right = 792.0
+margin_bottom = 200.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/RocketPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="Label" parent="VBoxContainer/HBoxContainer/RocketPanel/VBoxContainer"]
+margin_right = 246.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 2 )
+text = "Rocket Launcher"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/RocketPanel/VBoxContainer"]
+self_modulate = Color( 0.74902, 0.74902, 0.74902, 1 )
+margin_top = 34.0
+margin_right = 246.0
+margin_bottom = 152.0
+size_flags_vertical = 3
+
+[node name="Preview" type="TextureRect" parent="VBoxContainer/HBoxContainer/RocketPanel/VBoxContainer/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -103.0
+margin_top = -59.0
+margin_right = 103.0
+margin_bottom = 59.0
+texture = ExtResource( 5 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyButton" type="Button" parent="VBoxContainer/HBoxContainer/RocketPanel/VBoxContainer"]
+margin_top = 156.0
+margin_right = 246.0
+margin_bottom = 192.0
+custom_fonts/font = SubResource( 4 )
+text = "Buy - $1099"
+
+[node name="JimSounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )

@@ -15,3 +15,6 @@ func _process(_delta: float) -> void:
 
 func fire() -> void: # overridden in derivative classes
 	pass
+
+func spend_fire() -> void: # overridden in derivative classes
+	pass

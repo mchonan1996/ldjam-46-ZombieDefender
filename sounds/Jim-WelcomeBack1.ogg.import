@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Jim-WelcomeBack1.ogg-2ed178a8c0c31733d2faabb029c47498.oggstr"
+
+[deps]
+
+source_file="res://sounds/Jim-WelcomeBack1.ogg"
+dest_files=[ "res://.import/Jim-WelcomeBack1.ogg-2ed178a8c0c31733d2faabb029c47498.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

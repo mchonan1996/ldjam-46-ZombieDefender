@@ -17,15 +17,24 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if Global.in_shop:
+		return
+
 	var mouse_pos = get_global_mouse_position()
 	var diff_vector = (mouse_pos - global_position).normalized()
 	$AnimatedSprite.flip_h = diff_vector.x < 0
 
 	if Input.is_action_pressed("attack"):
-		fire_weapon()
+		var weapon = ($MountPoint.get_child(active_weapon) as Weapon)
+		if not weapon or not weapon.can_shoot:
+			return
+		fire_weapon(weapon)
 
 
 func _physics_process(_delta: float) -> void:
+	if Global.in_shop:
+		return
+
 	var movement_dir := get_movement_direction()
 	if movement_dir != Vector2.ZERO:
 		if movement_dir.x > 0:
@@ -64,23 +73,30 @@ func get_movement_direction() -> Vector2:
 	).normalized()
 
 
-func fire_weapon() -> void:
-#	print("Active wep: %d" % )
-	var weapon = ($MountPoint.get_child(active_weapon) as Weapon)
-	if not weapon or not weapon.can_shoot:
+func fire_weapon(weapon: Weapon) -> void:
+	# check ammo - probably make a noise if no ammo
+#	if weapon == WeaponType.PISTOL and Global.pistol_ammo <= 0:
+#		return
+	if active_weapon == WeaponType.SHOTGUN and Global.shotgun_ammo <= 0:
+		$GunClickSound.play()
+		weapon.spend_fire() # fake gunshot to waste a "can_shoot" interval
+		return
+	elif active_weapon == WeaponType.ROCKETS and Global.rocket_ammo <= 0:
+		$GunClickSound.play()
+		weapon.spend_fire() # fake gunshot to waste a "can_shoot" interval
 		return
 
 	weapon.fire()
-	reduce_ammo(weapon)
+	reduce_ammo()
 	get_tree().call_group("CAMERA", "start_shake", active_weapon)
 
 
-func reduce_ammo(weapon: Weapon) -> void:
-
-	# reduce for appropriate gun
-
-	#get_tree().call_group("HUD", "update_ammo", weapon.ammo_count)
-	pass
+func reduce_ammo() -> void:
+	if active_weapon == WeaponType.SHOTGUN:
+		Global.shotgun_ammo -= 1
+	elif active_weapon == WeaponType.ROCKETS:
+		Global.rocket_ammo -= 1
+	get_tree().call_group("HUD", "update_ammo", Global.shotgun_ammo, Global.rocket_ammo)
 
 
 func toggle_weapon_visibility(weapon) -> void:
