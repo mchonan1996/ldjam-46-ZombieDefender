@@ -92,7 +92,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="ZombieDefender"
+config/name="Bob The Bog Roll Defender"
+config/description="Bob The Bog Roll Defender"
 run/main_scene="res://levels/MainMenu.tscn"
 config/icon="res://icon.png"
 
