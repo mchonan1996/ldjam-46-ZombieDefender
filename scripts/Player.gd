@@ -8,12 +8,7 @@ var active_weapon
 var velocity := Vector2.ZERO
 
 func _ready() -> void:
-	# Set best weapon for the job
-	if Global.has_shotgun:
-		active_weapon = WeaponType.SHOTGUN
-	else:
-		active_weapon = WeaponType.PISTOL
-	toggle_weapon_visibility(active_weapon)
+	pass
 
 
 func _process(_delta: float) -> void:
@@ -54,16 +49,17 @@ func _input(_event) -> void:
 	var weap3_pressed = Input.is_action_just_pressed("switch_weap3")
 
 	if weap1_pressed or weap2_pressed or weap3_pressed:
-		var old_weapon = active_weapon
 		if weap1_pressed:
 			active_weapon = WeaponType.PISTOL
-		elif weap2_pressed:
+		elif weap2_pressed and Global.has_shotgun:
 			active_weapon = WeaponType.SHOTGUN
-		elif weap3_pressed:
+		elif weap3_pressed and Global.has_rocket:
 			active_weapon = WeaponType.ROCKETS
 
-		toggle_weapon_visibility(old_weapon) # toggle OUT the current one
-		toggle_weapon_visibility(active_weapon) # toggle IN the new one one
+		$MountPoint/Pistol.visible = active_weapon == WeaponType.PISTOL
+		$MountPoint/Shotgun.visible = active_weapon == WeaponType.SHOTGUN
+#		$MountPoint/RocketLauncher.visible = active_weapon == WeaponType.ROCKETS TODO
+
 
 
 func get_movement_direction() -> Vector2:
@@ -91,12 +87,13 @@ func fire_weapon(weapon: Weapon) -> void:
 	get_tree().call_group("CAMERA", "start_shake", active_weapon)
 
 
+
 func reduce_ammo() -> void:
 	if active_weapon == WeaponType.SHOTGUN:
 		Global.shotgun_ammo -= 1
 	elif active_weapon == WeaponType.ROCKETS:
 		Global.rocket_ammo -= 1
-	get_tree().call_group("HUD", "update_ammo", Global.shotgun_ammo, Global.rocket_ammo)
+	get_tree().call_group("HUD", "update_ammo")
 
 
 func toggle_weapon_visibility(weapon) -> void:
@@ -106,3 +103,12 @@ func toggle_weapon_visibility(weapon) -> void:
 		$MountPoint/Shotgun.visible = ! $MountPoint/Shotgun.visible
 	elif weapon == WeaponType.ROCKETS:
 		pass
+
+
+func _on_GameController_wave_started():
+	# Set best weapon for the job
+	if Global.has_shotgun:
+		active_weapon = WeaponType.SHOTGUN
+	else:
+		active_weapon = WeaponType.PISTOL
+	toggle_weapon_visibility(active_weapon)

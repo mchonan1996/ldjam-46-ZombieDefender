@@ -56,9 +56,53 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Spacer" type="ColorRect" parent="HBoxContainer"]
+[node name="Wave" type="ColorRect" parent="HBoxContainer"]
 margin_left = 128.0
-margin_right = 130.0
+margin_right = 248.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 120, 0 )
+color = Color( 0.192157, 0.192157, 0.192157, 0.87451 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WaveLabel" type="Label" parent="HBoxContainer/Wave"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+text = "Wave
+%d"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KilledLabel" type="ColorRect" parent="HBoxContainer"]
+margin_left = 256.0
+margin_right = 376.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 120, 0 )
+color = Color( 0.192157, 0.192157, 0.192157, 0.87451 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KilledLabel" type="Label" parent="HBoxContainer/KilledLabel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+text = "Killed
+%d"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer" type="ColorRect" parent="HBoxContainer"]
+margin_left = 384.0
+margin_right = 386.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 2, 0 )
 color = Color( 0.192157, 0.192157, 0.192157, 0.87451 )
@@ -67,8 +111,8 @@ __meta__ = {
 }
 
 [node name="PistolAmmo" type="ColorRect" parent="HBoxContainer"]
-margin_left = 138.0
-margin_right = 258.0
+margin_left = 394.0
+margin_right = 514.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 120, 0 )
 color = Color( 0.192157, 0.192157, 0.192157, 0.87451 )
@@ -89,8 +133,8 @@ __meta__ = {
 }
 
 [node name="ShotgunAmmo" type="ColorRect" parent="HBoxContainer"]
-margin_left = 266.0
-margin_right = 386.0
+margin_left = 522.0
+margin_right = 642.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 120, 0 )
 color = Color( 0.192157, 0.192157, 0.192157, 0.87451 )
@@ -111,8 +155,8 @@ __meta__ = {
 }
 
 [node name="RocketAmmo" type="ColorRect" parent="HBoxContainer"]
-margin_left = 394.0
-margin_right = 514.0
+margin_left = 650.0
+margin_right = 770.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 120, 0 )
 color = Color( 0.192157, 0.192157, 0.192157, 0.87451 )

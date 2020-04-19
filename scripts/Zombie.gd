@@ -5,6 +5,7 @@ export var starting_health: int = 100
 export var min_movement_speed: int = 40
 export var max_movement_speed: int = 80
 export var money_value: int = 25
+export var toilet_paper_chance: int = 25 # 100 = 100% chance
 
 const PAIN_SOUND_AMOUNT: int = 4 # amount of pain sounds for basic zombies
 const DEATH_SOUND_AMOUNT: int = 3 # amount of death sounds for basic zombies
@@ -13,6 +14,8 @@ const IMPACT_SOUND_AMOUNT: int = 2 # amount of impact hit sounds for basic zombi
 const KNOCKBACK_SMALL = 10
 const KNOCKBACK_MEDIUM = 30
 const KNOCKBACK_LARGE = 60
+
+const TOILET_PAPER_PATH = "res://prefabs/ToiletPaper.tscn"
 
 var movement_speed: float
 var health: int
@@ -23,6 +26,8 @@ var next_knockback: int  = 0
 
 var direction
 var player
+
+signal died
 
 func _ready() -> void:
 	randomize()
@@ -78,11 +83,16 @@ func damage(amount: int, active_weapon: int) -> void:
 
 func die() -> void:
 	is_dead = true
+	emit_signal("died")
+
 	$Sound.stream = load(get_random_death_sound())
 	$Sound.play()
 
 	# increase coins
 	get_tree().call_group("GAME", "increase_money", money_value)
+
+	# maybe spawn toilet paper
+	handle_toilet_paper()
 
 	yield(get_tree(), "idle_frame")
 	$CollisionShape2D.disabled = true
@@ -110,8 +120,22 @@ func _on_KnockbackTimer_timeout() -> void:
 
 
 func _on_DeadDisappear_animation_finished(_anim_name: String) -> void:
-	queue_free()
+	$FreeTimer.start() # give the player a chance to pick up toilet paper if any
 
 
 func _on_DeadDisappearTimer_timeout() -> void:
 	$AnimatedSprite/DeadDisappear.play("dead_disappear")
+
+
+func handle_toilet_paper() -> void:
+	var chance = 100 - (randf() * 100)
+	if chance <= toilet_paper_chance:
+		var tp = load(TOILET_PAPER_PATH).instance()
+		yield(get_tree(), "idle_frame")
+		add_child(tp)
+		tp.set_as_toplevel(true)
+		tp.global_position = global_position
+
+
+func _on_FreeTimer_timeout():
+	queue_free()

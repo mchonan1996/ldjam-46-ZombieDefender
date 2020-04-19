@@ -11,6 +11,7 @@ extents = Vector2( 9.93464, 4.32576 )
 colors = PoolColorArray( 1, 0, 0, 0, 1, 0.352941, 0, 0.6 )
 
 [node name="Bullet" type="Area2D"]
+z_index = 10
 script = ExtResource( 2 )
 damage_amount = 20
 

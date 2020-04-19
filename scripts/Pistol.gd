@@ -14,12 +14,10 @@ func _process(_delta: float) -> void:
 func fire() -> void:
 	if not can_shoot:
 		return
-	print("Firing Pistol")
 
 	# instance bullet
 	var bullet: Bullet = load(AMMO_PATH).instance()
 	add_child(bullet)
-	bullet.z_index = 0
 	bullet.position = gun_sprite.global_position
 	bullet.set_as_toplevel(true)
 

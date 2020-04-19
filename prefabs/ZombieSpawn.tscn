@@ -8,9 +8,10 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-level = null
-spawn_timer = null
-spawn_chance = null
 
 [node name="SpawnTimer" type="Timer" parent="."]
+
+[node name="WaveFinishedTimer" type="Timer" parent="."]
+one_shot = true
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+[connection signal="timeout" from="WaveFinishedTimer" to="." method="_on_WaveFinishedTimer_timeout"]

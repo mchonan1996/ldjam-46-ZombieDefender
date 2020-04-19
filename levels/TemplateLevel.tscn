@@ -2,7 +2,6 @@
 
 [ext_resource path="res://sprites/sky.png" type="Texture" id=1]
 [ext_resource path="res://prefabs/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://prefabs/ZombieBase.tscn" type="PackedScene" id=3]
 [ext_resource path="res://prefabs/HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sprites/Grass.png" type="Texture" id=5]
 [ext_resource path="res://sprites/FencePost.png" type="Texture" id=6]
@@ -112,12 +111,18 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 5/z_index = 0
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 31.8215, 234.073 )
+
 [node name="TemplateLevel" type="Node2D"]
 
 [node name="Sky" type="Sprite" parent="."]
 scale = Vector2( 4.2, 4.2 )
 texture = ExtResource( 1 )
 offset = Vector2( 128, 31 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 211.567, 279.531 )
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
@@ -130,27 +135,13 @@ script = ExtResource( 9 )
 
 [node name="GameController" parent="." instance=ExtResource( 12 )]
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 211.567, 279.531 )
-
 [node name="ZombieSpawn" parent="." instance=ExtResource( 11 )]
 margin_left = 1120.0
 margin_top = 181.0
 margin_right = 1170.0
 margin_bottom = 586.0
-spawn_timer = 1.0
-spawn_chance = 50.0
 
 [node name="Zombies" type="Node" parent="."]
-
-[node name="ZombieBase" parent="Zombies" instance=ExtResource( 3 )]
-position = Vector2( 873.673, 226.914 )
-
-[node name="ZombieBase2" parent="Zombies" instance=ExtResource( 3 )]
-position = Vector2( 941.27, 302.021 )
-
-[node name="ZombieBase3" parent="Zombies" instance=ExtResource( 3 )]
-position = Vector2( 945.561, 422.194 )
 
 [node name="BackgroundObjects" type="Node" parent="."]
 
@@ -170,14 +161,33 @@ tile_data = PoolIntArray( 196607, 2, 0, 262143, 1, 0, 327679, 1, 0, 393215, 3, 0
 visible = false
 tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
+collision_layer = 8
 format = 1
 tile_data = PoolIntArray( 131074, 5, 0, 131075, 5, 0, 131076, 5, 0, 131077, 5, 0, 131078, 5, 0, 131079, 5, 0, 131080, 5, 0, 131081, 5, 0, 131082, 5, 0, 131083, 5, 0, 131084, 5, 0, 131085, 5, 0, 131086, 5, 0, 131087, 5, 0, 131088, 5, 0, 131089, 5, 0, 131090, 5, 0, 131091, 5, 0, 131092, 5, 0, 131093, 5, 0, 131094, 5, 0, 131095, 5, 0, 131096, 5, 0, 131097, 5, 0, 131098, 5, 0, 131099, 5, 0, 131100, 5, 0, 131101, 5, 0, 131102, 5, 0, 131103, 5, 0, 131104, 5, 0, 131105, 5, 0, 131106, 5, 0, 131107, 5, 0, 196610, 5, 0, 196643, 5, 0, 262146, 5, 0, 262179, 5, 0, 327682, 5, 0, 327715, 5, 0, 393218, 5, 0, 393251, 5, 0, 458754, 5, 0, 458787, 5, 0, 524290, 5, 0, 524323, 5, 0, 589826, 5, 0, 589859, 5, 0, 655362, 5, 0, 655395, 5, 0, 720898, 5, 0, 720931, 5, 0, 786434, 5, 0, 786467, 5, 0, 851970, 5, 0, 852003, 5, 0, 917506, 5, 0, 917539, 5, 0, 983042, 5, 0, 983075, 5, 0, 1048578, 5, 0, 1048611, 5, 0, 1114114, 5, 0, 1114147, 5, 0, 1179650, 5, 0, 1179683, 5, 0, 1245186, 5, 0, 1245187, 5, 0, 1245188, 5, 0, 1245189, 5, 0, 1245190, 5, 0, 1245191, 5, 0, 1245192, 5, 0, 1245193, 5, 0, 1245194, 5, 0, 1245195, 5, 0, 1245196, 5, 0, 1245197, 5, 0, 1245198, 5, 0, 1245199, 5, 0, 1245200, 5, 0, 1245201, 5, 0, 1245202, 5, 0, 1245203, 5, 0, 1245204, 5, 0, 1245205, 5, 0, 1245206, 5, 0, 1245207, 5, 0, 1245208, 5, 0, 1245209, 5, 0, 1245210, 5, 0, 1245211, 5, 0, 1245212, 5, 0, 1245213, 5, 0, 1245214, 5, 0, 1245215, 5, 0, 1245216, 5, 0, 1245217, 5, 0, 1245218, 5, 0, 1245219, 5, 0 )
 
 [node name="House" parent="BackgroundObjects" instance=ExtResource( 10 )]
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.807843, 0.929412, 1, 1 )
+
 [node name="Shade" type="CanvasModulate" parent="."]
+visible = false
 color = Color( 0.282353, 0.282353, 0.282353, 1 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="BuyMenu" parent="UI" instance=ExtResource( 15 )]
+
+[node name="GameOverZone" type="Area2D" parent="."]
+position = Vector2( -129.153, 129.452 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameOverZone"]
+position = Vector2( 30.1369, 234.579 )
+shape = SubResource( 3 )
+[connection signal="wave_started" from="GameController" to="Player" method="_on_GameController_wave_started"]
+[connection signal="wave_started" from="GameController" to="ZombieSpawn" method="_on_GameController_wave_started"]
+[connection signal="wave_finished" from="ZombieSpawn" to="GameController" method="_on_ZombieSpawn_wave_finished"]
+[connection signal="buying_finished" from="UI/BuyMenu" to="GameController" method="_on_BuyMenu_buying_finished"]
+[connection signal="body_entered" from="GameOverZone" to="GameController" method="_on_GameOverZone_body_entered"]

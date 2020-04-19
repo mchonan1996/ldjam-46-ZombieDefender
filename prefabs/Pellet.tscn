@@ -7,6 +7,7 @@
 extents = Vector2( 2.19259, 2.18074 )
 
 [node name="Pellet" type="Area2D"]
+z_index = 10
 script = ExtResource( 1 )
 damage_amount = 10
 
