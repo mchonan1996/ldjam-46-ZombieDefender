@@ -1,6 +1,6 @@
 extends Node
 
-var money: int = 1000
+var money: int = 0
 
 var has_shotgun = true
 var has_rocket = true

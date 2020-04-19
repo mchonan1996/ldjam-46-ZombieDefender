@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/Zombie.gd" type="Script" id=1]
 [ext_resource path="res://sprites/prot/zombie_1.png" type="Texture" id=2]
@@ -53,6 +53,22 @@ animations = [ {
 "speed": 10.0
 } ]
 
+[sub_resource type="Animation" id=12]
+resource_name = "dead_disappear"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 2 ),
+"transitions": PoolRealArray( 1, 1.86607 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [sub_resource type="CapsuleShape2D" id=11]
 radius = 17.3678
 height = 44.8496
@@ -67,6 +83,9 @@ frames = SubResource( 10 )
 animation = "walk"
 playing = true
 
+[node name="DeadDisappear" type="AnimationPlayer" parent="AnimatedSprite"]
+anims/dead_disappear = SubResource( 12 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource( 11 )
@@ -80,4 +99,10 @@ volume_db = 2.0
 [node name="KnockbackTimer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
+
+[node name="DeadDisappearTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+[connection signal="animation_finished" from="AnimatedSprite/DeadDisappear" to="." method="_on_DeadDisappear_animation_finished"]
 [connection signal="timeout" from="KnockbackTimer" to="." method="_on_KnockbackTimer_timeout"]
+[connection signal="timeout" from="DeadDisappearTimer" to="." method="_on_DeadDisappearTimer_timeout"]
