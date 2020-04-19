@@ -15,10 +15,10 @@
 [ext_resource path="res://sprites/restricted.png" type="Texture" id=14]
 [ext_resource path="res://prefabs/BuyMenu.tscn" type="PackedScene" id=15]
 
-[sub_resource type="ConvexPolygonShape2D" id=2]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
-[sub_resource type="TileSet" id=1]
+[sub_resource type="TileSet" id=2]
 0/name = "grass"
 0/texture = ExtResource( 5 )
 0/tex_offset = Vector2( 0, 0 )
@@ -99,14 +99,14 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 5/navigation_offset = Vector2( 0, 0 )
 5/shape_offset = Vector2( 0, 0 )
 5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-5/shape = SubResource( 2 )
+5/shape = SubResource( 1 )
 5/shape_one_way = false
 5/shape_one_way_margin = 1.0
 5/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 5/z_index = 0
@@ -146,20 +146,20 @@ margin_bottom = 586.0
 [node name="BackgroundObjects" type="Node" parent="."]
 
 [node name="TileMap" type="TileMap" parent="BackgroundObjects"]
-tile_set = SubResource( 1 )
+tile_set = SubResource( 2 )
 cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 131072, 2, 0, 131073, 2, 0, 131074, 2, 0, 131075, 2, 0, 131076, 2, 0, 131077, 2, 0, 131078, 2, 0, 131079, 2, 0, 131080, 2, 0, 131081, 2, 0, 131082, 2, 0, 131083, 2, 0, 131084, 2, 0, 131085, 2, 0, 131086, 2, 0, 131087, 2, 0, 131088, 2, 0, 131089, 2, 0, 131090, 2, 0, 131091, 2, 0, 131092, 2, 0, 131093, 2, 0, 131094, 2, 0, 131095, 2, 0, 131096, 2, 0, 131097, 2, 0, 131098, 2, 0, 131099, 2, 0, 131100, 2, 0, 131101, 2, 0, 131102, 2, 0, 131103, 2, 0, 131104, 2, 0, 131105, 2, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 1, 0, 196617, 1, 0, 196618, 1, 0, 196619, 1, 0, 196620, 1, 0, 196621, 1, 0, 196622, 1, 0, 196623, 1, 0, 196624, 1, 0, 196625, 1, 0, 196626, 1, 0, 196627, 1, 0, 196628, 1, 0, 196629, 1, 0, 196630, 1, 0, 196631, 1, 0, 196632, 1, 0, 196633, 1, 0, 196634, 1, 0, 196635, 1, 0, 196636, 1, 0, 196637, 1, 0, 196638, 1, 0, 196639, 1, 0, 196640, 1, 0, 196641, 1, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0, 262154, 1, 0, 262155, 1, 0, 262156, 1, 0, 262157, 1, 0, 262158, 1, 0, 262159, 1, 0, 262160, 1, 0, 262161, 1, 0, 262162, 1, 0, 262163, 1, 0, 262164, 1, 0, 262165, 1, 0, 262166, 1, 0, 262167, 1, 0, 262168, 1, 0, 262169, 1, 0, 262170, 1, 0, 262171, 1, 0, 262172, 1, 0, 262173, 1, 0, 262174, 1, 0, 262175, 1, 0, 262176, 1, 0, 262177, 1, 0, 393215, 0, 0, 327681, 0, 0, 327683, 0, 0, 327685, 0, 0, 327687, 0, 0, 327689, 0, 0, 327691, 0, 0, 327693, 0, 0, 327695, 0, 0, 327697, 0, 0, 327699, 0, 0, 327701, 0, 0, 327703, 0, 0, 327705, 0, 0, 327707, 0, 0, 327709, 0, 0, 327711, 0, 0, 327713, 0, 0, 524287, 0, 0, 458753, 0, 0, 458755, 0, 0, 458757, 0, 0, 458759, 0, 0, 458761, 0, 0, 458763, 0, 0, 458765, 0, 0, 458767, 0, 0, 458769, 0, 0, 458771, 0, 0, 458773, 0, 0, 458775, 0, 0, 458777, 0, 0, 458779, 0, 0, 458781, 0, 0, 458783, 0, 0, 458785, 0, 0, 655359, 0, 0, 589825, 0, 0, 589827, 0, 0, 589829, 0, 0, 589831, 0, 0, 589833, 0, 0, 589835, 0, 0, 589837, 0, 0, 589839, 0, 0, 589841, 0, 0, 589843, 0, 0, 589845, 0, 0, 589847, 0, 0, 589849, 0, 0, 589851, 0, 0, 589853, 0, 0, 589855, 0, 0, 589857, 0, 0, 786431, 0, 0, 720897, 0, 0, 720899, 0, 0, 720901, 0, 0, 720903, 0, 0, 720905, 0, 0, 720907, 0, 0, 720909, 0, 0, 720911, 0, 0, 720913, 0, 0, 720915, 0, 0, 720917, 0, 0, 720919, 0, 0, 720921, 0, 0, 720923, 0, 0, 720925, 0, 0, 720927, 0, 0, 720929, 0, 0, 917503, 0, 0, 851969, 0, 0, 851971, 0, 0, 851973, 0, 0, 851975, 0, 0, 851977, 0, 0, 851979, 0, 0, 851981, 0, 0, 851983, 0, 0, 851985, 0, 0, 851987, 0, 0, 851989, 0, 0, 851991, 0, 0, 851993, 0, 0, 851995, 0, 0, 851997, 0, 0, 851999, 0, 0, 852001, 0, 0, 1048575, 0, 0, 983041, 0, 0, 983043, 0, 0, 983045, 0, 0, 983047, 0, 0, 983049, 0, 0, 983051, 0, 0, 983053, 0, 0, 983055, 0, 0, 983057, 0, 0, 983059, 0, 0, 983061, 0, 0, 983063, 0, 0, 983065, 0, 0, 983067, 0, 0, 983069, 0, 0, 983071, 0, 0, 983073, 0, 0, 1179647, 0, 0, 1114113, 0, 0, 1114115, 0, 0, 1114117, 0, 0, 1114119, 0, 0, 1114121, 0, 0, 1114123, 0, 0, 1114125, 0, 0, 1114127, 0, 0, 1114129, 0, 0, 1114131, 0, 0, 1114133, 0, 0, 1114135, 0, 0, 1114137, 0, 0, 1114139, 0, 0, 1114141, 0, 0, 1114143, 0, 0, 1114145, 0, 0 )
 
 [node name="TileMap2" type="TileMap" parent="BackgroundObjects"]
-tile_set = SubResource( 1 )
+tile_set = SubResource( 2 )
 cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 196607, 2, 0, 262143, 1, 0, 327679, 1, 0, 393215, 3, 0, 327680, 3, 0, 327681, 3, 0, 327682, 3, 0, 327683, 4, 0, 327684, 3, 0, 327685, 3, 0, 327686, 3, 0, 327687, 3, 0, 327688, 3, 0, 327689, 3, 0, 327690, 3, 0, 327691, 3, 0, 327692, 3, 0, 327693, 3, 0, 327694, 3, 0, 327695, 3, 0, 327696, 3, 0, 327697, 3, 0, 327698, 3, 0, 327699, 3, 0, 327700, 3, 0, 327701, 3, 0, 327702, 3, 0, 327703, 3, 0, 327704, 3, 0, 327705, 3, 0, 327706, 3, 0, 327707, 3, 0, 327708, 3, 0, 327709, 3, 0, 327710, 3, 0, 327711, 3, 0, 327712, 3, 0, 327713, 3, 0, 393219, 4, 0, 458755, 4, 0, 524291, 4, 0, 589827, 4, 0, 655363, 4, 0, 720899, 4, 0, 786435, 4, 0, 851971, 4, 0, 917507, 4, 0, 983043, 4, 0, 1048579, 4, 0, 1114115, 4, 0, 1179651, 4, 0 )
 
 [node name="RestrictionTilemap" type="TileMap" parent="BackgroundObjects"]
 visible = false
-tile_set = SubResource( 1 )
+tile_set = SubResource( 2 )
 cell_size = Vector2( 32, 32 )
 collision_layer = 8
 format = 1
@@ -179,15 +179,19 @@ color = Color( 0.282353, 0.282353, 0.282353, 1 )
 [node name="BuyMenu" parent="UI" instance=ExtResource( 15 )]
 
 [node name="GameOverZone" type="Area2D" parent="."]
-position = Vector2( -129.153, 129.452 )
+position = Vector2( 31.2914, 145.397 )
+z_index = 10
 collision_layer = 2
 collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameOverZone"]
 position = Vector2( 30.1369, 234.579 )
 shape = SubResource( 3 )
-[connection signal="wave_started" from="GameController" to="Player" method="_on_GameController_wave_started"]
 [connection signal="wave_started" from="GameController" to="ZombieSpawn" method="_on_GameController_wave_started"]
+[connection signal="wave_started" from="GameController" to="Player" method="_on_GameController_wave_started"]
 [connection signal="wave_finished" from="ZombieSpawn" to="GameController" method="_on_ZombieSpawn_wave_finished"]
 [connection signal="buying_finished" from="UI/BuyMenu" to="GameController" method="_on_BuyMenu_buying_finished"]
 [connection signal="body_entered" from="GameOverZone" to="GameController" method="_on_GameOverZone_body_entered"]
