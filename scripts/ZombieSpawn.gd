@@ -4,7 +4,7 @@ class_name ZombieSpawn
 export var spawn_timer: float = 1
 export var spawn_chance: float = 50 # 100 = 100%
 
-const ZOMBIE_PATH = "res://prefabs/ZombieBase.tscn"
+const ZOMBIE_PATH = "res://prefabs/Zombie%d.tscn"
 
 var zombie_container: Node
 var game_controller: Node
@@ -51,9 +51,16 @@ func _on_Zombie_Die() -> void:
 
 
 func spawn_zombie() -> void:
+	randomize()
+	var zombie_to_spawn = 1
+#	if Global.current_wave > 1: # only normal zombies for first round
+	zombie_to_spawn = randi() % 3 + 1
+	
+	var zombie_path = ZOMBIE_PATH % zombie_to_spawn
+	
 	zombies_spawned += 1
 	var spawner_pos = get_position()
-	var zombie: Zombie = load(ZOMBIE_PATH).instance()
+	var zombie: Zombie = load(zombie_path).instance()
 	zombie_container.add_child(zombie)
 
 	var spawner_height = get_size().y

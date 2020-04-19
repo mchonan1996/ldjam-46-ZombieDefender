@@ -26,19 +26,19 @@ region = Rect2( 128, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 16, 32 )
+region = Rect2( 0, 0, 16, 38 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 2 )
-region = Rect2( 16, 0, 16, 32 )
+region = Rect2( 16, 0, 16, 38 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 2 )
-region = Rect2( 32, 0, 16, 32 )
+region = Rect2( 32, 0, 16, 38 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 2 )
-region = Rect2( 48, 0, 16, 32 )
+region = Rect2( 48, 0, 16, 38 )
 
 [sub_resource type="SpriteFrames" id=10]
 animations = [ {
@@ -71,9 +71,9 @@ tracks/0/keys = {
 
 [sub_resource type="CapsuleShape2D" id=12]
 radius = 17.3678
-height = 44.8496
+height = 45.2644
 
-[node name="ZombieBase" type="KinematicBody2D"]
+[node name="Zombie1" type="KinematicBody2D"]
 z_index = 2
 collision_layer = 2
 collision_mask = 3
@@ -83,6 +83,7 @@ script = ExtResource( 1 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 10 )
 animation = "walk"
+frame = 3
 playing = true
 
 [node name="DeadDisappear" type="AnimationPlayer" parent="AnimatedSprite"]

@@ -190,8 +190,8 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameOverZone"]
 position = Vector2( 30.1369, 234.579 )
 shape = SubResource( 3 )
-[connection signal="wave_started" from="GameController" to="ZombieSpawn" method="_on_GameController_wave_started"]
 [connection signal="wave_started" from="GameController" to="Player" method="_on_GameController_wave_started"]
+[connection signal="wave_started" from="GameController" to="ZombieSpawn" method="_on_GameController_wave_started"]
 [connection signal="wave_finished" from="ZombieSpawn" to="GameController" method="_on_ZombieSpawn_wave_finished"]
 [connection signal="buying_finished" from="UI/BuyMenu" to="GameController" method="_on_BuyMenu_buying_finished"]
 [connection signal="body_entered" from="GameOverZone" to="GameController" method="_on_GameOverZone_body_entered"]
