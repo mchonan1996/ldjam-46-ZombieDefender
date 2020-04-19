@@ -46,14 +46,14 @@ func create_shell_shot():
 	# create 8 pellets
 	var target_pos := get_global_mouse_position()
 	create_pellet(target_pos)
+	create_pellet(target_pos.rotated(deg2rad(1)))
 	create_pellet(target_pos.rotated(deg2rad(2)))
 	create_pellet(target_pos.rotated(deg2rad(4)))
-	create_pellet(target_pos.rotated(deg2rad(6)))
-	create_pellet(target_pos.rotated(deg2rad(8)))
+	create_pellet(target_pos.rotated(deg2rad(5)))
+	create_pellet(target_pos.rotated(deg2rad(-1)))
 	create_pellet(target_pos.rotated(deg2rad(-2)))
 	create_pellet(target_pos.rotated(deg2rad(-4)))
-	create_pellet(target_pos.rotated(deg2rad(-6)))
-	create_pellet(target_pos.rotated(deg2rad(-8)))
+	create_pellet(target_pos.rotated(deg2rad(-5)))
 
 
 func create_pellet(direction: Vector2):

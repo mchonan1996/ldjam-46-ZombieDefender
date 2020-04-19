@@ -7,10 +7,20 @@ export var max_movement_speed: int = 80
 
 const PAIN_SOUND_AMOUNT: int = 4 # amount of pain sounds for basic zombies
 const DEATH_SOUND_AMOUNT: int = 3 # amount of death sounds for basic zombies
+const IMPACT_SOUND_AMOUNT: int = 2 # amount of impact hit sounds for basic zombies
+
+const KNOCKBACK_SMALL = 10
+const KNOCKBACK_MEDIUM = 30
+const KNOCKBACK_LARGE = 60
 
 var movement_speed: float
 var health: int
 var is_dead: bool = false
+
+var can_knockback: bool = true
+var next_knockback: int  = 0
+
+var direction
 
 func _ready() -> void:
 	randomize()
@@ -20,16 +30,37 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if not is_dead:
-		var direction = Vector2.LEFT
+		direction = Vector2.LEFT
+		
+		if next_knockback > 0 and can_knockback:
+			direction += Vector2.RIGHT * next_knockback
+			next_knockback = 0
+			can_knockback = false
+			$KnockbackTimer.start()
+		
 		move_and_slide(direction * movement_speed, Vector2.UP)
 	else:
 		$AnimatedSprite.play("die")
 
 
-func damage(amount: int) -> void:
+func damage(amount: int, active_weapon: int) -> void:
 	if is_dead:
 		return
 	health -= amount
+	
+	if can_knockback:
+		if active_weapon == WeaponType.PISTOL:
+			next_knockback = KNOCKBACK_SMALL
+		elif active_weapon == WeaponType.SHOTGUN:
+			next_knockback = KNOCKBACK_MEDIUM
+		elif active_weapon == WeaponType.ROCKETS:
+			next_knockback = KNOCKBACK_LARGE
+	
+	# play impact sound
+	if not $ImpactSound.is_playing():
+		$ImpactSound.stream = load(get_random_impact_sound())
+		$ImpactSound.play()
+	
 	if health <= 0:
 		die()
 	else:
@@ -55,3 +86,13 @@ func get_random_death_sound() -> String:
 	randomize()
 	var i = randi() % DEATH_SOUND_AMOUNT + 1
 	return "res://sounds/zombie_basic_die%d.ogg" % i
+	
+
+func get_random_impact_sound() -> String:
+	randomize()
+	var i = randi() % IMPACT_SOUND_AMOUNT + 1
+	return "res://sounds/zombie_hit%d.ogg" % i
+
+
+func _on_KnockbackTimer_timeout() -> void:
+	can_knockback = true

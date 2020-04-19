@@ -1,12 +1,6 @@
 extends KinematicBody2D
 class_name Player
 
-enum WeaponType {
-	pistol,
-	shotgun,
-	rockets
-}
-
 const MOVEMENT_SPEED := 300
 const FRICTION := 0.12
 
@@ -16,9 +10,9 @@ var velocity := Vector2.ZERO
 func _ready() -> void:
 	# Set best weapon for the job
 	if Global.has_shotgun:
-		active_weapon = WeaponType.shotgun
+		active_weapon = WeaponType.SHOTGUN
 	else:
-		active_weapon = WeaponType.pistol
+		active_weapon = WeaponType.PISTOL
 	toggle_weapon_visibility(active_weapon)
 
 
@@ -53,11 +47,11 @@ func _input(_event) -> void:
 	if weap1_pressed or weap2_pressed or weap3_pressed:
 		var old_weapon = active_weapon
 		if weap1_pressed:
-			active_weapon = WeaponType.pistol
+			active_weapon = WeaponType.PISTOL
 		elif weap2_pressed:
-			active_weapon = WeaponType.shotgun
+			active_weapon = WeaponType.SHOTGUN
 		elif weap3_pressed:
-			active_weapon = WeaponType.rockets
+			active_weapon = WeaponType.ROCKETS
 
 		toggle_weapon_visibility(old_weapon) # toggle OUT the current one
 		toggle_weapon_visibility(active_weapon) # toggle IN the new one one
@@ -78,7 +72,7 @@ func fire_weapon() -> void:
 
 	weapon.fire()
 	reduce_ammo(weapon)
-	get_tree().call_group("CAMERA", "start_shake")
+	get_tree().call_group("CAMERA", "start_shake", active_weapon)
 
 
 func reduce_ammo(weapon: Weapon) -> void:
@@ -90,9 +84,9 @@ func reduce_ammo(weapon: Weapon) -> void:
 
 
 func toggle_weapon_visibility(weapon) -> void:
-	if weapon == WeaponType.pistol:
+	if weapon == WeaponType.PISTOL:
 		$MountPoint/Pistol.visible = ! $MountPoint/Pistol.visible
-	elif weapon == WeaponType.shotgun:
+	elif weapon == WeaponType.SHOTGUN:
 		$MountPoint/Shotgun.visible = ! $MountPoint/Shotgun.visible
-	elif weapon == WeaponType.rockets:
+	elif weapon == WeaponType.ROCKETS:
 		pass

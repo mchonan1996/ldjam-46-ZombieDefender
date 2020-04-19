@@ -44,10 +44,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/Weapon.gd"
 }, {
+"base": "Node",
+"class": "WeaponType",
+"language": "GDScript",
+"path": "res://scripts/WeaponType.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Zombie",
 "language": "GDScript",
 "path": "res://scripts/Zombie.gd"
+}, {
+"base": "ColorRect",
+"class": "ZombieSpawn",
+"language": "GDScript",
+"path": "res://scripts/ZombieSpawn.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
@@ -57,7 +67,9 @@ _global_script_class_icons={
 "Player": "",
 "Shotgun": "",
 "Weapon": "",
-"Zombie": ""
+"WeaponType": "",
+"Zombie": "",
+"ZombieSpawn": ""
 }
 
 [application]

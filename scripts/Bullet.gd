@@ -4,10 +4,12 @@ class_name Bullet
 const BULLET_SPEED = 2000
 
 var velocity := Vector2.ZERO
+var weapon_source: int
 
 export var damage_amount = 0
 
 func _ready() -> void:
+	weapon_source = WeaponType.PISTOL
 	var target_pos := get_global_mouse_position()
 	velocity = -(global_position - target_pos).normalized()
 
@@ -25,5 +27,5 @@ func _on_Bullet_body_entered(body: Node) -> void:
 	if not zombie:
 		return
 
-	zombie.damage(damage_amount)
+	zombie.damage(damage_amount, weapon_source)
 	queue_free()
