@@ -102,12 +102,24 @@ func go_to_shop():
 
 
 func go_to_game_over():
-	print("Game Over!")
-	pass
+	$BGM.stop()
+	yield(get_tree(), "idle_frame")
+	Global.reset()
+	get_tree().change_scene("res://levels/GameOver.tscn")
+
+
+func go_to_win_screen():
+	$BGM.stop()
+	yield(get_tree(), "idle_frame")
+	Global.reset()
+	get_tree().change_scene("res://levels/WinGame.tscn")
 
 
 func _on_ZombieSpawn_wave_finished():
-	go_to_shop()
+	if Global.has_rocket:
+		go_to_win_screen()
+	else:
+		go_to_shop()
 
 
 func _on_GameOverZone_body_entered(body):

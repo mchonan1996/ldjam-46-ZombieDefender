@@ -1,4 +1,4 @@
-- Game over
-- Win game
+- Game over voiceline?
+- WIn game voiceline?
 - Rocket Launcher
 - Toilet paper sound
