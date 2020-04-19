@@ -56,10 +56,7 @@ func _input(_event) -> void:
 		elif weap3_pressed and Global.has_rocket:
 			active_weapon = WeaponType.ROCKETS
 
-		$MountPoint/Pistol.visible = active_weapon == WeaponType.PISTOL
-		$MountPoint/Shotgun.visible = active_weapon == WeaponType.SHOTGUN
-#		$MountPoint/RocketLauncher.visible = active_weapon == WeaponType.ROCKETS TODO
-
+		toggle_weapon_visibility()
 
 
 func get_movement_direction() -> Vector2:
@@ -96,13 +93,10 @@ func reduce_ammo() -> void:
 	get_tree().call_group("HUD", "update_ammo")
 
 
-func toggle_weapon_visibility(weapon) -> void:
-	if weapon == WeaponType.PISTOL:
-		$MountPoint/Pistol.visible = ! $MountPoint/Pistol.visible
-	elif weapon == WeaponType.SHOTGUN:
-		$MountPoint/Shotgun.visible = ! $MountPoint/Shotgun.visible
-	elif weapon == WeaponType.ROCKETS:
-		pass
+func toggle_weapon_visibility() -> void:
+	$MountPoint/Pistol.visible = active_weapon == WeaponType.PISTOL
+	$MountPoint/Shotgun.visible = active_weapon == WeaponType.SHOTGUN
+	$MountPoint/RocketLauncher.visible = active_weapon == WeaponType.ROCKETS
 
 
 func _on_GameController_wave_started():
@@ -111,4 +105,4 @@ func _on_GameController_wave_started():
 		active_weapon = WeaponType.SHOTGUN
 	else:
 		active_weapon = WeaponType.PISTOL
-	toggle_weapon_visibility(active_weapon)
+	toggle_weapon_visibility()

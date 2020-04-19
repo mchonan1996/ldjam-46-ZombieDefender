@@ -6,35 +6,35 @@
 [ext_resource path="res://sounds/shotgun_shot.ogg" type="AudioStream" id=4]
 [ext_resource path="res://sounds/shotgun_reload.ogg" type="AudioStream" id=5]
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
 region = Rect2( 32, 0, 32, 16 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
 region = Rect2( 64, 0, 32, 16 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
 region = Rect2( 96, 0, 32, 16 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
 region = Rect2( 128, 0, 32, 16 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
 region = Rect2( 160, 0, 32, 16 )
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": false,
 "name": "default",
 "speed": 25.0
 } ]
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 length = 0.2
 step = 0.05
 tracks/0/type = "value"
@@ -58,7 +58,7 @@ script = ExtResource( 3 )
 [node name="Gun" type="AnimatedSprite" parent="ArmParent"]
 position = Vector2( 27.8315, 3.77376 )
 scale = Vector2( 2.5, 2 )
-frames = SubResource( 7 )
+frames = SubResource( 6 )
 offset = Vector2( 7, 0 )
 
 [node name="Arm" type="Sprite" parent="ArmParent"]
@@ -66,7 +66,7 @@ scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ArmParent"]
-anims/shoot = SubResource( 8 )
+anims/shoot = SubResource( 7 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.8
