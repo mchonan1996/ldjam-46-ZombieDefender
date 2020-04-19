@@ -4,6 +4,7 @@ extends Node2D
 func _on_Area2D_body_entered(_body):
 	Global.money += 30
 	$AnimationPlayer.play("collect")
+	$PickupSound.play()
 	#todo play sound???
 
 
