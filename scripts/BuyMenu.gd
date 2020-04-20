@@ -3,7 +3,7 @@ class_name BuyMenu
 
 const PISTOL_PRICE: int = 49
 const SHOTGUN_PRICE: int = 399
-const ROCKETS_PRICE: int = 1099
+const ROCKETS_PRICE: int = 2499
 const AMMO_PRICE: int = 50
 
 const COLOR_SOLD = Color("00ab23")
@@ -80,8 +80,12 @@ func _on_BuyShotgun_pressed():
 
 func _on_BuyRockets_pressed():
 	var price = ROCKETS_PRICE
-	if Global.has_shotgun:
+	if Global.has_rocket:
 		price = AMMO_PRICE
+		
+	if Global.money < price:
+		no_cash()
+		return
 
 	Global.money -= price
 

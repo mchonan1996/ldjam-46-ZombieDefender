@@ -5,7 +5,7 @@ var current_wave: int = 0
 var current_wave_zombie_cnt: int = 0
 var current_wave_zombie_killed: int = 0
 
-var money: int = 5000
+var money: int = 50
 
 var has_pistol = false # purely cosmetic, no verification
 var has_shotgun = false

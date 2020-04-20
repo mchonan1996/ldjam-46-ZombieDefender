@@ -11,9 +11,9 @@
 size = 42
 font_data = ExtResource( 1 )
 
-[sub_resource type="Theme" id=3]
+[sub_resource type="Theme" id=2]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 24
 font_data = ExtResource( 1 )
 
@@ -72,7 +72,7 @@ margin_right = 261.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = SubResource( 3 )
+theme = SubResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PistolPanel"]
 anchor_right = 1.0
@@ -87,7 +87,7 @@ __meta__ = {
 [node name="Description" type="Label" parent="VBoxContainer/HBoxContainer/PistolPanel/VBoxContainer"]
 margin_right = 245.0
 margin_bottom = 30.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Pistol"
 align = 1
 __meta__ = {
@@ -129,7 +129,7 @@ margin_right = 526.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = SubResource( 3 )
+theme = SubResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ShotgunPanel"]
 anchor_right = 1.0
@@ -144,7 +144,7 @@ __meta__ = {
 [node name="Description" type="Label" parent="VBoxContainer/HBoxContainer/ShotgunPanel/VBoxContainer"]
 margin_right = 245.0
 margin_bottom = 30.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Shotgun"
 align = 1
 __meta__ = {
@@ -186,7 +186,7 @@ margin_right = 792.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = SubResource( 3 )
+theme = SubResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/RocketPanel"]
 anchor_right = 1.0
@@ -201,7 +201,7 @@ __meta__ = {
 [node name="Description" type="Label" parent="VBoxContainer/HBoxContainer/RocketPanel/VBoxContainer"]
 margin_right = 246.0
 margin_bottom = 30.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Rocket Launcher"
 align = 1
 __meta__ = {
@@ -235,7 +235,7 @@ margin_top = 156.0
 margin_right = 246.0
 margin_bottom = 192.0
 custom_fonts/font = SubResource( 4 )
-text = "Buy - $1099"
+text = "Buy - $2499"
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
 margin_top = 299.0

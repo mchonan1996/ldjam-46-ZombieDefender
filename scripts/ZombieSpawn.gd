@@ -74,7 +74,7 @@ func spawn_zombie() -> void:
 
 
 func bulk_spawn_start() -> void:
-	var initial_zombie_count = floor(1.5 * Global.current_wave)
+	var initial_zombie_count = floor(1.2 * Global.current_wave)
 	for _i in range(initial_zombie_count):
 		if zombies_spawned < Global.current_wave_zombie_cnt:
 			spawn_zombie()

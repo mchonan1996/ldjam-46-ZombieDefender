@@ -54,7 +54,9 @@ animations = [ {
 } ]
 
 [node name="Zombie3" instance=ExtResource( 1 )]
+starting_health = 65
+money_value = 35
 
 [node name="AnimatedSprite" parent="." index="0"]
 frames = SubResource( 10 )
-frame = 3
+frame = 0
