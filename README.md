@@ -24,6 +24,6 @@ Keep your toilet paper collection alive!
 * ​I apologise, I wasn't able to test the Windows/Linux builds, but if they don't work I'll gladly fix them!
 
 
-
-_Made with love using Godot :)_
+**Building**
+Developed using Godot 3.2.1 stable.
 
